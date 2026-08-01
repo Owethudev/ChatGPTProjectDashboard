@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Badge } from "../ui/Badge";
 import type { Project } from "../../types";
 
@@ -6,11 +7,16 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const toneMap = {
-    "On Track": "success" as const,
-    "At Risk": "warning" as const,
-    Planning: "info" as const,
-    Completed: "default" as const,
+  const toneMap: Record<
+    Project["status"],
+    "success" | "warning" | "info" | "default"
+  > = {
+    Active: "info",
+    "On Track": "success",
+    "At Risk": "warning",
+    Planning: "info",
+    Completed: "default",
+    Archived: "default",
   };
 
   return (
@@ -22,9 +28,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <Badge label={project.status} tone={toneMap[project.status]} />
       </div>
-      <div className="mt-5 flex items-center justify-between text-sm text-slate-400">
-        <span>Owner: {project.owner}</span>
-        <span>Due: {project.deadline}</span>
+      <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-slate-400">
+        <span>{project.progress}% complete</span>
+        <span>•</span>
+        <span>Due {project.deadline}</span>
+      </div>
+      <div className="mt-4 flex items-center justify-between">
+        <span className="text-sm text-slate-400">
+          {project.teamMemberIds.length} team members
+        </span>
+        <Link
+          to={`/projects/${project.id}`}
+          className="text-sm font-medium text-sky-300"
+        >
+          View details
+        </Link>
       </div>
     </article>
   );
