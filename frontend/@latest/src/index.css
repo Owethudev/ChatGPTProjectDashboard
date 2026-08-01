@@ -1,2 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+    --color-stage-todo: #64748b;
+    --color-stage-todo-soft: #64748b26;
+    --color-stage-progress: #3b82f6;
+    --color-stage-progress-soft: #3b82f626;
+    --color-stage-review: #8b5cf6;
+    --color-stage-review-soft: #8b5cf626;
+    --color-stage-done: #14b8a6;
+    --color-stage-done-soft: #14b8a626;
+    --color-stage-overdue: #ef4444;
+    --color-stage-overdue-soft: #ef444426;
+}

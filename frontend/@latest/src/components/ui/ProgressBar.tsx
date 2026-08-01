@@ -1,3 +1,5 @@
+import { progressStage, stageClasses } from "../../utils/stage";
+
 type ProgressBarProps = {
   value: number;
   label?: string;
@@ -9,6 +11,8 @@ export function ProgressBar({
   label,
   className = "",
 }: ProgressBarProps) {
+  const classes = stageClasses(progressStage(value));
+
   return (
     <div className={className}>
       {label && (
@@ -19,7 +23,7 @@ export function ProgressBar({
       )}
       <div className="h-2 rounded-full bg-slate-800">
         <div
-          className="h-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400"
+          className={`h-2 rounded-full ${classes.bg}`}
           style={{ width: `${value}%` }}
         />
       </div>
