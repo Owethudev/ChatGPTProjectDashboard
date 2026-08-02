@@ -5,7 +5,6 @@ import {
   Cell,
   Tooltip,
   ResponsiveContainer,
-  Legend,
 } from "recharts";
 import type { Project } from "../../types";
 
@@ -44,7 +43,8 @@ export function ProjectStatusChart({ projects }: Props) {
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
+  <div className="space-y-4">
+    <ResponsiveContainer width="100%" height={260}>
       <PieChart>
         <Pie
           data={data}
@@ -53,7 +53,7 @@ export function ProjectStatusChart({ projects }: Props) {
           innerRadius={55}
           outerRadius={95}
           paddingAngle={3}
-          label={({ percent }) => `${Math.round((percent ?? 0) * 100)}%`}
+          label={false}
         >
           {data.map((item, index) => (
             <Cell
@@ -63,28 +63,41 @@ export function ProjectStatusChart({ projects }: Props) {
           ))}
         </Pie>
 
-        <Tooltip cursor={false} 
-     contentStyle={{
-    backgroundColor: "#0f172a",
-    border: "1px solid #334155",
-    borderRadius: "10px",
-    color: "#fff",
-  }}
-/>
-
-        <Legend
-          verticalAlign="bottom"
-           formatter={(value) => {
-  const item = data.find((d) => d.name === value);
-
-  if (!item) return value;
-
-  const percentage = Math.round((item.value / projects.length) * 100);
-
-  return `${value} (${item.value} • ${percentage}%)`;
-}} 
-        />
+        <Tooltip cursor={false} />
       </PieChart>
     </ResponsiveContainer>
-  );
+
+    <div className="space-y-2">
+      {data.map((item) => {
+        const percentage = Math.round(
+          (item.value / projects.length) * 100,
+        );
+
+        return (
+          <div
+            key={item.name}
+            className="flex items-center justify-between rounded-lg bg-slate-950/40 px-3 py-2"
+          >
+            <div className="flex items-center gap-3">
+              <span
+                className="h-3 w-3 rounded-full"
+                style={{
+                  backgroundColor:
+                    STATUS_COLORS[item.name] ?? "#94a3b8",
+                }}
+              />
+              <span className="text-sm text-slate-300">
+                {item.name}
+              </span>
+            </div>
+
+            <span className="text-sm font-medium text-white">
+              {item.value} ({percentage}%)
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);
 }
