@@ -21,42 +21,109 @@ export function TaskCard({
     <button
       type="button"
       onClick={() => onSelect?.(task.id)}
-      className="w-full rounded-2xl border border-slate-800 bg-slate-900/80 p-4 text-left"
+      className="
+        w-full
+        rounded-2xl
+        border
+        border-slate-800
+        bg-slate-900/80
+        p-5
+        text-left
+        transition-all
+        duration-200
+        hover:-translate-y-1
+        hover:border-sky-500/40
+        hover:bg-slate-900
+        hover:shadow-lg
+        focus:outline-none
+        focus:ring-2
+        focus:ring-sky-500
+      "
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h4 className="font-semibold text-white">{task.title}</h4>
-          <p className="mt-2 text-sm text-slate-400">{task.description}</p>
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1">
+          <h4 className="text-lg font-semibold text-white">
+            {task.title}
+          </h4>
+
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            {task.description}
+          </p>
         </div>
+
         <StatusBadge status={task.status} />
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-2 text-sm text-slate-400">
+
+      <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-400">
         <PriorityBadge priority={task.priority} />
-        <span>{member?.name ?? "Unassigned"}</span>
-        <span>•</span>
-        <span>Due {task.dueDate}</span>
+
+        <span className="text-slate-600">•</span>
+
+        <span>
+          👤 {member?.name ?? "Unassigned"}
+        </span>
+
+        <span className="text-slate-600">•</span>
+
+        <span>
+          📅 Due {task.dueDate}
+        </span>
       </div>
-      <div className="mt-4 flex flex-wrap gap-2">
+
+      <div className="mt-5 flex flex-wrap gap-3">
         <select
           value={task.status}
           onClick={(event) => event.stopPropagation()}
           onChange={(event) =>
-            onStatusChange?.(task.id, event.target.value as Task["status"])
+            onStatusChange?.(
+              task.id,
+              event.target.value as Task["status"],
+            )
           }
-          className="rounded-lg border border-slate-700 bg-slate-950/70 px-2 py-1 text-sm text-white"
+          className="
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-950/70
+            px-3
+            py-2
+            text-sm
+            text-white
+            transition-colors
+            hover:border-sky-500
+            focus:border-sky-500
+            focus:outline-none
+          "
         >
           <option value="To Do">To Do</option>
           <option value="In Progress">In Progress</option>
           <option value="In Review">In Review</option>
           <option value="Completed">Completed</option>
         </select>
+
         <select
           value={task.priority}
           onClick={(event) => event.stopPropagation()}
           onChange={(event) =>
-            onPriorityChange?.(task.id, event.target.value as Task["priority"])
+            onPriorityChange?.(
+              task.id,
+              event.target.value as Task["priority"],
+            )
           }
-          className="rounded-lg border border-slate-700 bg-slate-950/70 px-2 py-1 text-sm text-white"
+          className="
+            rounded-lg
+            border
+            border-slate-700
+            bg-slate-950/70
+            px-3
+            py-2
+            text-sm
+            text-white
+            transition-colors
+            hover:border-sky-500
+            focus:border-sky-500
+            focus:outline-none
+          "
         >
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
