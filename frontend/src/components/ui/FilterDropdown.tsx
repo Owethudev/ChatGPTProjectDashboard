@@ -12,12 +12,12 @@ export function FilterDropdown<T extends string>({
   onChange,
 }: FilterDropdownProps<T>) {
   return (
-    <label className="block text-sm text-slate-300">
+    <label className="block text-sm text-slate-600">
       <span className="mb-2 block">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value as T)}
-        className="w-full rounded-xl border border-slate-700 bg-slate-950/70 px-3 py-2.5 text-sm text-white outline-none"
+        className="w-full rounded-full border border-white/80 bg-white/75 px-3 py-2.5 text-sm text-slate-900 outline-none"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

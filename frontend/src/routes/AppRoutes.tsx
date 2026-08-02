@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { DashboardPage } from "../pages/DashboardPage";
 import { ProjectsPage } from "../pages/ProjectsPage";
+import { TasksPage } from "../pages/TasksPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 
 const ProjectDetailsPage = lazy(() =>
@@ -33,6 +34,7 @@ export function AppRoutes() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:projectId" element={<ProjectDetailsPage />} />
+        <Route path="/tasks" element={<TasksPage />} />
         <Route path="/tasks/:taskId" element={<TaskDetailsPage />} />
         <Route path="/tasks/new" element={<CreateTaskPage />} />
         <Route path="*" element={<NotFoundPage />} />

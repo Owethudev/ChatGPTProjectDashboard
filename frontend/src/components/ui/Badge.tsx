@@ -5,11 +5,11 @@ type BadgeProps = {
 
 export function Badge({ label, tone = "default" }: BadgeProps) {
   const toneClasses = {
-    default: "bg-slate-800 text-slate-200",
-    success: "bg-emerald-500/15 text-emerald-300",
-    warning: "bg-amber-500/15 text-amber-300",
-    danger: "bg-rose-500/15 text-rose-300",
-    info: "bg-sky-500/15 text-sky-300",
+    default: "bg-white/80 text-slate-700",
+    success: "bg-emerald-500/15 text-emerald-700",
+    warning: "bg-amber-500/15 text-amber-700",
+    danger: "bg-rose-500/15 text-rose-700",
+    info: "bg-sky-500/15 text-sky-700",
   };
 
   return (

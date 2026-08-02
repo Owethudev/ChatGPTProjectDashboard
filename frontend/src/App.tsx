@@ -48,7 +48,7 @@ function AppShell() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(125,211,252,0.18),_transparent_32%),radial-gradient(circle_at_top_right,_rgba(167,139,250,0.16),_transparent_30%),#fafafc] text-slate-800">
       <div className="flex min-h-screen">
         <Sidebar activeView={activeView} onNavigate={handleNavigate} />
         <div className="flex-1">
