@@ -16,17 +16,53 @@ function AppShell() {
 
   const breadcrumbItems = useMemo(() => {
     const path = location.pathname;
-    if (path.startsWith("/projects/")) {
-      return ["Home", "Workspace", "Projects", "Details"];
-    }
-    if (path.startsWith("/tasks/")) {
-      return ["Home", "Workspace", "Tasks", "Details"];
-    }
+
+  if (path.startsWith("/projects/")) {
     return [
-      "Home",
-      "Workspace",
-      activeView.charAt(0).toUpperCase() + activeView.slice(1),
+      { label: "Home", href: "/dashboard" },
+      { label: "Workspace", href: "/projects" },
+      { label: "Projects", href: "/projects" },
+      { label: "Details" },
     ];
+  }
+
+  if (path.startsWith("/tasks/")) {
+    return [
+      { label: "Home", href: "/dashboard" },
+      { label: "Workspace", href: "/projects" },
+      { label: "Tasks", href: "/tasks/new" },
+      { label: "Details" },
+    ];
+  }
+
+  switch (activeView) {
+    case "dashboard":
+      return [
+        { label: "Home", href: "/dashboard" },
+        { label: "Workspace", href: "/projects" },
+        { label: "Dashboard" },
+      ];
+
+    case "projects":
+      return [
+        { label: "Home", href: "/dashboard" },
+        { label: "Workspace", href: "/projects" },
+        { label: "Projects" },
+      ];
+
+    case "tasks":
+      return [
+        { label: "Home", href: "/dashboard" },
+        { label: "Workspace", href: "/projects" },
+        { label: "Tasks" },
+      ];
+
+    default:
+      return [
+        { label: "Home", href: "/dashboard" },
+        { label: "Workspace", href: "/projects" },
+      ];
+  }
   }, [activeView, location.pathname]);
 
   const handleNavigate = (view: View) => {
