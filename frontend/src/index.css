@@ -12,3 +12,21 @@
     --color-stage-overdue: #ef4444;
     --color-stage-overdue-soft: #ef444426;
 }
+
+/* ---------- Recharts ---------- */
+
+.recharts-wrapper,
+.recharts-wrapper * {
+    outline: none !important;
+}
+
+.recharts-surface:focus,
+.recharts-sector:focus,
+.recharts-rectangle:focus,
+.recharts-layer:focus {
+    outline: none !important;
+}
+
+svg:focus {
+    outline: none !important;
+}
