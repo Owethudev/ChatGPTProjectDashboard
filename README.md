@@ -1,25 +1,18 @@
 # Project Management Dashboard
 
-A frontend-only project management dashboard built with React 19, TypeScript, Vite, React Router, Tailwind CSS, Context API, and LocalStorage persistence. The app provides a modular experience for browsing projects, managing tasks, viewing project details, and creating tasks without a backend.
+## Project Overview
 
-## Overview
-
-This project demonstrates a production-style frontend architecture for a project management product. It focuses on reusable components, typed state, clean routing, controlled forms, validation, and instant UI updates powered by mock data.
+This project is a frontend-only project management dashboard built with React, TypeScript, Vite, and Tailwind CSS. It provides a polished interface for viewing projects, tracking tasks, and managing work items without requiring a backend.
 
 ## Features
 
-- Dashboard with calculated statistics and project progress
-- Projects page with search, status filtering, and sorting
-- Project details with tasks, team members, and progress
-- Task details with status, priority, assignee, and delete actions
-- Controlled task creation form with validation
-- LocalStorage persistence for projects, tasks, members, and activity
-- Lazy-loaded routes for project details and task details
-- Responsive Tailwind-based layout
-
-## Screenshots
-
-Placeholder for screenshots.
+- Dashboard with summary statistics and progress insights
+- Projects page with search, filtering, and status views
+- Project detail pages showing tasks, members, and progress
+- Task detail pages with status, priority, assignee, and notes
+- Task creation form with validation and instant updates
+- LocalStorage-based persistence for a realistic demo experience
+- Responsive layout designed for desktop and smaller screens
 
 ## Technologies Used
 
@@ -31,52 +24,18 @@ Placeholder for screenshots.
 - Context API
 - LocalStorage
 
-## Folder Structure
+## Setup Instructions
 
-- src/components: reusable UI and domain components
-- src/context: global state management
-- src/data: mock JSON-style data
-- src/hooks: custom hooks
-- src/pages: route-level views
-- src/routes: router configuration and lazy-loaded routes
-- src/types: typed models for projects, tasks, and members
-- src/utils: small helpers
-
-## Installation
+From the repository root, run:
 
 ```bash
-cd frontend/@latest
+cd frontend
 npm install
 npm run dev
 ```
 
-## Available Scripts
+The app will be available in your browser at the local Vite URL shown in the terminal.
 
-```bash
-npm run dev
-npm run build
-npm run preview
-```
+## Data Source Information
 
-## Data Source
-
-Mock data is provided from src/data/mockData.ts and is persisted in LocalStorage so refreshes preserve changes.
-
-## State Management
-
-Global state is managed through Context API with custom hooks for local persistence and dashboard statistics.
-
-## Future Improvements
-
-- Connect to a real backend API
-- Add authentication and role-based access
-- Expand analytics and charts
-- Add drag-and-drop task boards
-
-## Deployment
-
-The app is Vite-based and can be deployed to Vercel with the standard build command.
-
-## License
-
-MIT
+The app uses mock data stored in the frontend source under the data folder. Project and task changes are also persisted locally in the browser using LocalStorage, so updates remain available after a refresh.
