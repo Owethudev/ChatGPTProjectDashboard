@@ -63,41 +63,79 @@ export function ProjectDetailsPage() {
       <PageHeader title={project.name} description={project.description} />
       <div className="grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
         <div className="space-y-6">
-          <Card
+        <Card
             title="Project Information"
             description="Core project details and health metrics."
           >
-            <div className="space-y-3 text-sm text-slate-300">
-              <p>
-                <span className="text-slate-500">Status:</span>{" "}
-                <span className="ml-2 inline-flex">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Status
+                </p>
+
+                <div className="mt-3">
                   <StatusBadge status={project.status} />
-                </span>
-              </p>
-              <p>
-                <span className="text-slate-500">Priority:</span>{" "}
-                <span className="ml-2 inline-flex">
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Priority
+                </p>
+
+                <div className="mt-3">
                   <PriorityBadge priority={project.priority} />
-                </span>
-              </p>
-              <p>
-                <span className="text-slate-500">Deadline:</span>{" "}
-                {formatDate(project.deadline)}
-              </p>
-              <p>
-                <span className="text-slate-500">Start date:</span>{" "}
-                {formatDate(project.startDate)}
-              </p>
-            </div>
-          </Card>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Start Date
+                </p>
+
+                <p className="mt-2 font-medium text-white">
+                  {formatDate(project.startDate)}
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4">
+                <p className="text-xs uppercase tracking-wide text-slate-500">
+                  Deadline
+                </p>
+
+                <p className="mt-2 font-medium text-white">
+                  {formatDate(project.deadline)}
+                </p>
+              </div>
+                </div>
+         </Card>
 
           <Card
             title="Progress"
             description="Current delivery progress and completion trend."
           >
-            <div className="space-y-4">
-              <ProgressBar value={project.progress} label="Delivery progress" />
-            </div>
+            <div className="space-y-5">
+  <div className="flex items-center justify-between">
+    <div>
+      <p className="text-sm text-slate-400">
+        Overall Completion
+      </p>
+
+      <p className="mt-1 text-3xl font-bold text-white">
+        {project.progress}%
+      </p>
+    </div>
+
+    <StatusBadge status={project.status} />
+  </div>
+
+  <div className="transition-all duration-700 ease-out">
+    <ProgressBar
+      value={project.progress}
+      label="Delivery progress"
+    />
+  </div>
+</div>
           </Card>
 
           <Card title="Tasks" description="The tasks attached to this project.">
@@ -143,7 +181,7 @@ export function ProjectDetailsPage() {
                 projectMembers.map((member) => (
                   <div
                     key={member.id}
-                    className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 px-3 py-3 text-sm text-slate-300"
+                    className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 px-3 py-3 text-sm text-slate-300 transition-all duration-200 hover:-translate-y-1 hover:border-sky-500/40 hover:bg-slate-900"
                   >
                     <div>
                       <p className="font-medium text-white">{member.name}</p>
@@ -167,20 +205,20 @@ export function ProjectDetailsPage() {
             title="Quick actions"
             description="Manage the current project state."
           >
-            <div className="space-y-3">
+            <div className="space-y-3 animate-fade-in duration-300">
               <button
                 type="button"
                 onClick={() => navigate("/tasks/new")}
-                className="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-200"
+                className="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-200 transition-all duration-200 hover:bg-slate-800 hover:scale-[1.02]"
               >
-                Create task
+                ➕Create task
               </button>
               <button
                 type="button"
                 onClick={() => deleteTask(projectTasks[0]?.id ?? "")}
-                className="w-full rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-200"
+                className="w-full rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-2 text-sm text-rose-200 transition-all duration-200 hover:bg-slate-800 hover:scale-[1.02]"
               >
-                Delete first task
+                 🗑️ Delete first task
               </button>
             </div>
           </Card>
