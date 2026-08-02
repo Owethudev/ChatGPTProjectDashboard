@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PageHeader } from "../components/common/PageHeader";
 import { StatCard } from "../components/dashboard/StatCard";
 import { Card } from "../components/ui/Card";
@@ -10,6 +10,7 @@ import { ProjectStatusChart } from "../components/dashboard/ProjectStatusChart";
 import { TaskCompletionChart } from "../components/dashboard/TaskCompletionChart";
 
 export function DashboardPage() {
+  const navigate = useNavigate();
   const { projects, tasks, activities } = useProjects();
   const stats = useProjectStats(projects, tasks);
 
@@ -33,21 +34,25 @@ export function DashboardPage() {
           title="Total Projects"
           value={String(stats.totalProjects)}
           subtitle="Portfolio overview"
+          onClick={() => navigate("/projects")}
         />
         <StatCard
           title="Active Projects"
           value={String(stats.activeProjects)}
           subtitle="Currently in progress"
+          onClick={() => navigate("/projects")}
         />
         <StatCard
           title="Completed Projects"
           value={String(stats.completedProjects)}
           subtitle="Delivered items"
+          onClick={() => navigate("/projects")}
         />
         <StatCard
           title="Total Tasks"
           value={String(stats.totalTasks)}
           subtitle="Tracked work items"
+          onClick={() => navigate("/tasks")}
         />
       </div>
 
@@ -56,21 +61,25 @@ export function DashboardPage() {
           title="Completed Tasks"
           value={String(stats.completedTasks)}
           subtitle={`${stats.completedPercentage}% complete`}
+          onClick={() => navigate("/tasks")}
         />
         <StatCard
           title="Overdue Tasks"
           value={String(stats.overdueTasks)}
           subtitle="Past due"
+          onClick={() => navigate("/tasks")}
         />
         <StatCard
           title="Upcoming Deadlines"
           value={String(stats.upcomingDeadlines)}
           subtitle="Next 7 days"
+          onClick={() => navigate("/tasks")}
         />
         <StatCard
           title="Overall Progress"
           value={`${stats.overallProgress}%`}
           subtitle="Average project progress"
+          onClick={() => navigate("/projects")}
         />
       </div>
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
