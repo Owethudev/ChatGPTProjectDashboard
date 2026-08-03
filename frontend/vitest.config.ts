@@ -6,11 +6,11 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
     css: true,
-    pool: 'threads',
-    poolOptions: {
-      threads: {
-        singleThread: true,
-      },
+  },
+  pool: 'threads',
+  poolOptions: {
+    threads: {
+      singleThread: true,
     },
   },
 });
